@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>サブスくん</title>
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icon-512.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="サブスくん">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#1f5c6b">
+<style>
+  body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #eef2e6; color: #1e2a22; font-family: -apple-system, "Hiragino Sans", sans-serif; }
+  main { text-align: center; padding: 24px; max-width: 360px; }
+  img { width: 96px; height: 96px; border-radius: 22px; }
+  h1 { font-size: 20px; margin: 12px 0 4px; }
+  p { font-size: 14px; line-height: 1.7; color: #5c6b5e; }
+  a.open { display: block; margin: 18px 0; padding: 14px; border-radius: 12px; background: #1f5c6b; color: #f3f8f6; font-size: 16px; text-decoration: none; }
+  @media (prefers-color-scheme: dark) {
+    body { background: #131d17; color: #e6efe8; }
+    p { color: #9db0a2; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <img src="apple-touch-icon.png" alt="">
+  <h1>サブスくん</h1>
+  <a class="open" id="openLink" href="#">アプリを開く</a>
+  <p>ホーム画面に追加するときは、<strong>この画面</strong>で共有ボタン →「ホーム画面に追加」を押してください。<br>追加後は、ホーム画面のアイコンから自動でアプリが開きます。</p>
+</main>
+<script>
+  // ★ デプロイしたGASのウェブアプリURL（…/exec）に書き換える
+  var APP_URL = "https://script.google.com/macros/s/AKfycbztR74-FRSsIJ8M8kHdvId01K40CFgQOjYGLRNRIDRX6F-ESPV6ci2Qcsvwb8w8UNag/exec";
+
+  document.getElementById("openLink").href = APP_URL;
+  var standalone = window.navigator.standalone === true ||
+    (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches);
+  // ホーム画面のアイコンから起動したときだけ自動でアプリへ移動（ブラウザ表示中は移動しない）
+  if (standalone) location.replace(APP_URL);
+</script>
+</body>
+</html>
